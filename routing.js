@@ -2,6 +2,7 @@ const getRandomNumber = require('./randomNumber.js');
 const createBook = require('./books/create.js')
 const getAllBook = require('./books/readAll.js')
 const getOneBook = require('./books/readOne.js')
+const updateBook = require('./books/update.js')
 
 module.exports = function(req, res) {
     if(req.url === "/random-number" && req.method === "GET") {
@@ -22,6 +23,7 @@ module.exports = function(req, res) {
         // get the book with the specified id
     }
     else if (req.url.match(/\/books\/\d+/) && req.method === "PUT") {
+        updateBook(req, res)
         // update the book with the specified id
     }
     else if (req.url.match(/\/books\/\d+/) && req.method === "DELETE") {

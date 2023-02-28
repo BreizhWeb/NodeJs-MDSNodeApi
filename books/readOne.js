@@ -17,24 +17,21 @@ module.exports = function (req, res) {
     (async () => {
         await sequelize.sync({force: false});
         try {
+
             let body = req.url.split('/')[2];
-
-            console.log(body)
-
             const book = await Book.findByPk(body);
 
             if (book) {
-
                 res.writeHead(200, { "Content-Type": "application/json" });
                 res.end(JSON.stringify(book));
                 console.log('Book  find', book)
 
             } else {
-                res.status(404).json({message: `Book with ID ${id} not found`});
+                return res.writeHead(404, {message: `Book with ID ${id} not found` });
             }
         } catch (error) {
-            console.log("ERROr")
-            res.status(500).json({error: error.message});
+            res.writeHead(500, { "Content-Type": "application/json" });
+            res.end(JSON.stringify(error));
         }
     })();
 }
