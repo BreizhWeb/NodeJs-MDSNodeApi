@@ -9,25 +9,28 @@ module.exports = function(req, res) {
         getRandomNumber(res);
     }
     else if(req.url === "/books" && req.method === "POST") {
-        console.log('CREATE BOOK')
         createBook(req, res)
+        console.log('Book créé')
     }
     else if(req.url === "/books" && req.method === "GET") {
-        console.log('READ ALL')
-        getAllBook(req, res)
         // get all books
+        getAllBook(req, res)
+        console.log('Affichage de tous les books')
     }
     else if (req.url.match(/\/books\/\d+/) && req.method === "GET") {
-        console.log('READ ONE')
-        getOneBook(req, res)
         // get the book with the specified id
+        getOneBook(req, res)
+        console.log('Affichage du book')
     }
     else if (req.url.match(/\/books\/\d+/) && req.method === "PUT") {
-        updateBook(req, res)
         // update the book with the specified id
+        updateBook(req, res)
+        console.log('Book update')
     }
     else if (req.url.match(/\/books\/\d+/) && req.method === "DELETE") {
         // delete the book with the specified id
+        deleteBook(req, res)
+        console.log('Book delete')
     }
 }
 

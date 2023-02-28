@@ -24,8 +24,6 @@ module.exports = function (req, res) {
             if (book) {
                 res.writeHead(200, { "Content-Type": "application/json" });
                 res.end(JSON.stringify(book));
-                console.log('Book  find', book)
-
             } else {
                 return res.writeHead(404, {message: `Book with ID ${id} not found` });
             }
