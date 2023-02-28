@@ -1,0 +1,24 @@
+{
+  "name": "mdsnodeapi",
+  "version": "1.0.0",
+  "description": "A simple API using Node.js and sequelize",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BaptisteEveno/cours-framework-js.git"
+  },
+  "author": "Baptiste Eveno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BaptisteEveno/cours-framework-js/issues"
+  },
+  "homepage": "https://github.com/BaptisteEveno/cours-framework-js#readme",
+  "dependencies": {
+    "sequelize": "^6.29.0",
+    "sqlite3": "^5.1.4"
+  }
+}

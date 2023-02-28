@@ -6,6 +6,7 @@ const sequelize = new Sequelize({
 
 module.exports = function (req, res) {
 
+
     const Book = sequelize.define("book", {
         title: DataTypes.TEXT,
         description: DataTypes.TEXT,
@@ -16,19 +17,23 @@ module.exports = function (req, res) {
     (async () => {
         await sequelize.sync({force: false});
         try {
-            const {id} = req.params;
+            let body = req.url.split('/')[2];
 
+            console.log(body)
 
-            console.log("ID", req.params)
-            const book = await Book.findByPk(id);
+            const book = await Book.findByPk(body);
 
             if (book) {
-                console.log('Book  find')
-                res.status(200).json(book);
+
+                res.writeHead(200, { "Content-Type": "application/json" });
+                res.end(JSON.stringify(book));
+                console.log('Book  find', book)
+
             } else {
                 res.status(404).json({message: `Book with ID ${id} not found`});
             }
         } catch (error) {
+            console.log("ERROr")
             res.status(500).json({error: error.message});
         }
     })();
